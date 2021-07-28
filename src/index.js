@@ -80,14 +80,9 @@ client.manager = new Manager({
 
   client.manager.on("queueEnd", player => {
     const channel = client.channels.cache.get(player.textChannel);
-    channel.send(`${Emojis.Certo} » Fila de músicas acabou, vou esperar **2 minutos** antes de sair do canal!`);
-    setTimeout(() => {
-      if (!player) return;
-
-      return player.destroy()
-    }, 2 * 60000);
-  });
-
+    channel.send(`${Emojis.Certo} » Fila de músicas acabou, saí do canal!`);
+    return player.destroy()
+  })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 client.manager.on('nodeConnect', (node) => {
   client.lavalinkPings.set(node.identifier, {});
