@@ -24,7 +24,7 @@ module.exports = class Loop extends Command {
     if(message.member.voice.channel.id != message.guild.me.voice.channel.id === true) return message.reply(`${Emojis.Errado} » Você precisa estar no mesmo canal que eu estou para modificar a fila!`)
     }
     const player = message.client.manager.players.get(message.guild.id)
-    if (player.queueRepeat) {
+    if (player.queueRepeat === true) {
       player.setQueueRepeat(false);
       message.channel.send(`${Emojis.Certo} » Loop desativado!`);
     } else {
