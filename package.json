@@ -4,7 +4,7 @@
   "description": "smooze",
   "main": "index.js",
   "dependencies": {
-    "@discordjs/opus": "github:discordjs/opus",
+    "@discordjs/opus": "^0.5.3",
     "@iamtraction/google-translate": "^1.1.2",
     "aki-api": "^5.2.1",
     "axios": "^0.21.1",
