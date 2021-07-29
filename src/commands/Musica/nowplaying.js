@@ -48,7 +48,7 @@ module.exports = class NowPlaying extends Command {
 
     //========================// Import Background //========================//
 
-    const background = await loadImage("./src/assets/img/png/np.png");
+    const background = await loadImage("./src/assets/img/png/NP.png");
     ctx.drawImage(background, 0, 0, 700, 1000);
 
     //========================// Linhas //========================//
@@ -58,14 +58,14 @@ module.exports = class NowPlaying extends Command {
     ctx.textAlign = "left";
     ctx.font = '60px "Bebas"';
     ctx.fillStyle = "rgb(88, 101, 242)";
-    ctx.fillText(`${name.lenght > 23 ? name.slice(0, 20)+"..." : name}`, 60, 710);
+    ctx.fillText(`${name.slice(0, 20) + "..."}`, 60, 710);
 
     // Autor
 
     ctx.textAlign = "left";
     ctx.font = '50px "Bebas"';
     ctx.fillStyle = "rgb(105, 105, 105)";
-    ctx.fillText(`${autor.lenght > 20 ? autor.slice(0, 17)+"..." : autor}`, 60, 769);
+    ctx.fillText(`${autor.slice(0, 18)+"..."}`, 60, 769);
 
     const attach = new MessageAttachment(
         canvas.toBuffer(),
