@@ -30,7 +30,7 @@ module.exports = class Docs extends Command {
       .then((embed) => {
         const { data } = embed;
         if (data && !data.error) {
-          message.reply({ embed: data });
+          message.reply({ embeds: [data] });
         } else {
           message.reply(`${Emojis.Errado} » Esse documento não existe!`);
         }
