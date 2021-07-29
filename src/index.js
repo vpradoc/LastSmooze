@@ -63,6 +63,8 @@ client.manager = new Manager({
     plugins: [
       
       new Spotify({
+        playlistLimit: undefined,
+        albumLimit: undefined,
         clientID,
         clientSecret,
       }),

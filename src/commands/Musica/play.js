@@ -34,13 +34,18 @@ module.exports = class Play extends Command {
       if (res.loadType === "LOAD_FAILED") throw res.exception;
       
     
-      
-    const player = this.client.manager.create({
-      guild: message.guild.id,
-      voiceChannel: message.member.voice.channel.id,
-      textChannel: message.channel.id,
-    });
-    
+   
+      let player = this.client.manager.players.get(message.guild.id);
+      !player
+        ? (player = this.client.manager.create({
+            guild: message.guild.id,
+            voiceChannel: message.member.voice.channel.id,
+            textChannel: message.channel.id,
+            selfDeafen: true,
+          }))
+        : (player = player);
+  
+      if(player.state != "CONNECTED") player.connect();
 
     if (res.loadType === "PLAYLIST_LOADED") {
 
