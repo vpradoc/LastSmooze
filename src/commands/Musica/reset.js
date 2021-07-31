@@ -23,17 +23,17 @@
     async run(message, args, prefix, author) {
   
       if(message.guild.me.voice.channel != null) {
-      if(message.member.voice.channel.id != message.guild.me.voice.channel.id === true) return message.reply(`${Emojis.Errado} » Você precisa estar no mesmo canal que eu estou para modificar a fila!`)
+      if(message.member.voice.channel.id != message.guild.me.voice.channel.id === true) return message.reply(`${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu estou para modificar a fila!`)
       }
       const player = message.client.manager.players.get(message.guild.id)
         
       const { channel } = message.member.voice
       
-      if (!channel) return message.reply(`${Emojis.Errado} » Você precisa estar em um canal para modificar a ordem de músicas!`)
+      if (!channel) return message.reply(`${Emojis.Errado} **|** Você precisa estar em um canal para modificar a ordem de músicas!`)
       
       if(player) {
         player.destroy()
-        return message.channel.send(`${Emojis.Certo} » Limpei a fila e saí do canal...`);
+        return message.channel.send(`${Emojis.Certo} **|** Limpei a fila e saí do canal...`);
       }
       
   }

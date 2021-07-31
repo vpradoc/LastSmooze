@@ -20,15 +20,15 @@ module.exports = class Skip extends Command {
     const player = this.client.manager.get(message.guild.id);
     
     if(message.guild.me.voice.channel != null) {
-      if(message.member.voice.channel.id != message.guild.me.voice.channel.id === true) return message.reply(`${Emojis.Errado} » Você precisa estar no mesmo canal que eu estou para modificar a fila!`)
+      if(message.member.voice.channel.id != message.guild.me.voice.channel.id === true) return message.reply(`${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu estou para modificar a fila!`)
       }
-      if (!player) return message.reply(`${Emojis.Errado} » Não estou em nenhum canal!`);
+      if (!player) return message.reply(`${Emojis.Errado} **|** Não estou em nenhum canal!`);
   
       const { channel } = message.member.voice;
-      if (!channel) return message.reply(`${Emojis.Errado} » Você precisa estar em um canal!`);
-      if (channel.id !== player.voiceChannel) return message.reply(`${Emojis.Errado} » Você precisa estar no mesmo canal que eu para modificar a fila!`);
+      if (!channel) return message.reply(`${Emojis.Errado} **|** Você precisa estar em um canal!`);
+      if (channel.id !== player.voiceChannel) return message.reply(`${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu para modificar a fila!`);
 
-      if (!player.queue.current) return message.reply(`${Emojis.Errado} » Não tem nenhuma música na fila!`)
+      if (!player.queue.current) return message.reply(`${Emojis.Errado} **|** Não tem nenhuma música na fila!`)
 
       const { title } = player.queue.current;
 
