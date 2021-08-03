@@ -50,7 +50,7 @@ module.exports = class LavaStats extends Command {
           value: `${ms(node.stats.uptime)}`,
         },
         {
-          name: `${Emojis.Gaming} CPU:}`,
+          name: `${Emojis.Engrenagem} CPU:`,
           value: `**Cores:** ${node.stats.cpu.cores}\n**Lavalink:** ${~~(node.stats.cpu.lavalinkLoad * 100)}%\n**System:** ${~~(node.stats.cpu.systemLoad * 100)}%`    
         },
         {
