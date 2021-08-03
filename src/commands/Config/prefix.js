@@ -21,7 +21,7 @@ module.exports = class Prefix extends Command {
     Guild.findOne({ _id: message.guild.id }, async (err, server) => {
       let prefixo = args[0];
 
-      if (!message.member.hasPermission("MANAGE_GUILD")) {
+      if (!message.member.permissions.has("MANAGE_GUILD")) {
         return message.reply(
           `${Emojis.Errado} » Você não tem a permissão necessária (\`MANAGE_GUILD\`)para executar esse comando!`
         );

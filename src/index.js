@@ -74,10 +74,19 @@ client.manager = new Manager({
   client.lavalinkPings = new Map();
 
 
-  client.manager.on("trackStart", (player, track) => {
+  client.manager.on("trackStart", async (player, track) => {
     const channel = client.channels.cache.get(player.textChannel);
+    
+    if (player.lastPlayingMsgID) {
+      const msg = channel.messages.cache.get(player.lastPlayingMsgID);
 
-    return channel.send(`${Emojis.CD} | Iniciando **${track.title}**, pedido por \`${track.requester.tag}\`.`);
+      if (msg) msg.delete();
+    }
+
+    player.lastPlayingMsgID = await channel
+      .send(`${Emojis.CD} | Iniciando **${track.title}**, pedido por \`${track.requester.tag}\`.`)
+      .then((x) => x.id);
+
   });
 
   client.manager.on("queueEnd", player => {
