@@ -28,11 +28,25 @@ module.exports = class Bass extends Command {
     
     const valor = args[0]
 
+    if(valor === "off") {
+
+      var Obj = {
+        "band": 0,
+        "gain": 0,
+      }
+      player.setEQ(Obj)
+      message.reply(`${Emojis.Certo} **|** Grave desativado!`)
+  
+  
+    }
+    else if(valor === "on") {
     var Obj = {
         "band": 0,
-        "gain": valor,
+        "gain": 0.25,
       }
-
-    isNaN(valor) ? message.reply(`${Emojis.Errado} **|** Por favor, coloque um número!`) : valor > 5 ? `${Emojis.Errado} **|** Por favor, coloque um valor de **0 á 5** !` : player.setEQ(Obj)}
+      player.setEQ(Obj)
+      message.reply(`${Emojis.Certo} **|** Grave ativado!`)
+    }
+  }
   }
 

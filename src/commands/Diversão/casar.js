@@ -22,6 +22,10 @@ module.exports = class Marry extends Command {
     const user1 =
       this.client.users.cache.get(args[0]) || message.mentions.users.first();
 
+    if(user1.id === this.client.user.id) {
+      return message.reply(`${emojis.Errado} » Você não pode se casar comigo !`);
+    }
+
     const doc = await User.findOne({
       _id: message.author.id,
     });

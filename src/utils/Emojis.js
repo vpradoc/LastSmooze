@@ -4,7 +4,7 @@ module.exports = {
   Lampada: "<:lampada:866096568667340840>",
   Pensando: "<:thinking:866096843528470538>",
   Nervoso: "<:nervous:866097145160400926>",
-  Smooze: "<:smooze:803618840433000488>",
+  Smooze: "<:smooze:873346922117730355>",
   Fone: "<:fone:866097327432138793>",
   Texto: "<:texto:866097525462794250>",
   Gay: "🌈",

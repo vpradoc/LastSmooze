@@ -20,7 +20,7 @@ module.exports = class Entrada extends Command {
   }
 
   async run(message, args, prefix, author) {
-    if (!message.member.hasPermission("MANAGE_GUILD"))
+    if (!message.member.permissions.has("MANAGE_GUILD"))
       return message.reply(
         `${Emojis.Errado} » Você precisa da permissão \`MANAGE_GUILD\` para executar o comando!`
       );
@@ -290,7 +290,7 @@ module.exports = class Entrada extends Command {
             )}\``
           )
           .addField(
-            `${Emojis.Smooze} » Informações pré-definidas:`,
+            `${Emojis.Toy} » Informações pré-definidas:`,
             `\`\`\`{member} » Menciona o usuário\n{name} » Nome do usuário\n{total} » Total de membros do servidor\n{guild} » Nome do servidor\n{quebra} » Quebra a linha\`\`\``
           )
           .addField(
@@ -337,7 +337,7 @@ module.exports = class Entrada extends Command {
           message.guild.iconURL({ dynamic: true })
         )
         .addField(
-          `${Emojis.Smooze} O Sistema se encontra: \`${
+          `${Emojis.Toy} O Sistema se encontra: \`${
             server.entrada.status ? "Ativado" : "Desativado"
           }\``,
           `\`\`\`${server.prefix}entrada msg <Mensagem>\n${server.prefix}entrada canal <Canal>\n${server.prefix}entrada <on/off>\n${server.prefix}entrada set <Mensagem/Embed>\n${server.prefix}entrada help\n${server.prefix}entrada test\`\`\``

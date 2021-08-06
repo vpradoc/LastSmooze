@@ -20,7 +20,7 @@ module.exports = class Saida extends Command {
   }
 
   async run(message, args, prefix, author) {
-    if (!message.member.hasPermission("MANAGE_GUILD"))
+    if (!message.member.permissions.has("MANAGE_GUILD"))
       return message.reply(
         `${Emojis.Errado} » Você precisa da permissão \`MANAGE_GUILD\` para executar o comando!`
       );
@@ -291,7 +291,7 @@ module.exports = class Saida extends Command {
             )}\``
           )
           .addField(
-            `${Emojis.Smooze} » Informações pré-definidas:`,
+            `${Emojis.Toy} » Informações pré-definidas:`,
             `\`\`\`\n{name} » Nome do usuário\n{total} » Total de membros do servidor\n{guild} » Nome do servidor\n{quebra} » Quebra a linha\`\`\``
           )
           .addField(
@@ -338,7 +338,7 @@ module.exports = class Saida extends Command {
           message.guild.iconURL({ dynamic: true })
         )
         .addField(
-          `${Emojis.Smooze} O Sistema se encontra: \`${
+          `${Emojis.Toy} O Sistema se encontra: \`${
             server.saida.status ? "Ativado" : "Desativado"
           }\``,
           `\`\`\`${server.prefix}saida msg <Mensagem>\n${server.prefix}saida canal <Canal>\n${server.prefix}saida <on/off>\n${server.prefix}saida set <Mensagem/Embed>\n${server.prefix}saida help\n${server.prefix}saida test\`\`\``

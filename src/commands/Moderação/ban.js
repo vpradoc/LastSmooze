@@ -20,7 +20,7 @@ module.exports = class Ban extends Command {
     if (message.deletable) message.delete();
 
     if (!message.member.permissions.has("BAN_MEMBERS")) {
-      return;
+      return message.reply(`${Emojis.Errado} » Você não tem as permissões necessárias (\`BAN_MEMBERS\`)!`)
     }
 
     //Se não houver uma pessoa para tomar o BAN!
@@ -32,6 +32,10 @@ module.exports = class Ban extends Command {
       return message.channel.send(
         `${Emojis.Errado} » ${message.author}, por favor coloque alguém para que eu aplique o ban!`
       );
+    }
+
+    if(Banido.id === this.client.user.id) {
+      return message.reply(`${Emojis.Errado} » Eu não posso me banir!`)
     }
 
     //Membro não encontrado!

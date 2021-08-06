@@ -1,5 +1,6 @@
 const Command = require("../../structures/Command.js");
 const Emojis = require("../../utils/Emojis");
+const Guild = require("../../database/Schemas/Guild");
 const User = require('../../database/Schemas/User.js')
 module.exports = class Eval extends Command {
   constructor(client) {
@@ -17,6 +18,7 @@ module.exports = class Eval extends Command {
 
   async run(message, args, prefix, author) {
 
+    Guild.findOne({ _id: message.guild.id }, async (err, server) => {
     User.findOne({ _id: args[0] }, async (err, user) => {
 
         let owners = ["680943469228982357", "600804786492932101"];
@@ -47,7 +49,10 @@ module.exports = class Eval extends Command {
       message.reply(`${Emojis.Certo} » Valor modificado para \`${args[2]}\`!`)
   await User.findOneAndUpdate({ _id: args[1]  }, {$set: {'marry.user': args[2]}})
   }
-
-    })
+  if(args[0] === 'prefix') {
+    message.reply(`${Emojis.Certo} » Valor modificado para \`${args[2]}\`!`)
+  await Guild.findOneAndUpdate({ _id: args[1]  }, {$set: {'prefix': args[2]}})
   }
+    })
+  })}
 };
