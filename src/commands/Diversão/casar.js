@@ -44,6 +44,12 @@ module.exports = class Marry extends Command {
 
     const target = await User.findOne({ _id: user1.id });
 
+    if(!target) {
+      return message.reply(
+        `${emojis.Errado} » Não encontrei esse user em minha database!`
+      );
+    }
+
     if (target.marry.has)
       return message.reply(
         `${
