@@ -48,7 +48,7 @@ client.manager = new Manager({
   nodes: [
     {
         identifier: 'Node 1',
-        host: 'smoozelava.herokuapp.com',
+        host: 'smoozelavaa.herokuapp.com',
         port: 80,
         password: "testando",
         retryAmount: 30,
