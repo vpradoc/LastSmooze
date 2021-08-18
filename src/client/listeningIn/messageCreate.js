@@ -73,7 +73,6 @@ module.exports = class {
 
       if (comando) {
         let owners = ["680943469228982357", "600804786492932101"];
-        if (!owners.some((x) => x == message.author.id))
 
         if (!owners.some((x) => x == message.author.id)) {
           if (comando.manutenção)
@@ -93,7 +92,7 @@ module.exports = class {
         var num = comando.usages;
         num = num + 1;
 
-        if (!["680943469228982357"].includes(message.author.id)) {
+        if (!["680943469228982357", "600804786492932101"].includes(message.author.id)) {
           coldoown.add(message.author.id);
           setTimeout(() => {
             coldoown.delete(message.author.id);

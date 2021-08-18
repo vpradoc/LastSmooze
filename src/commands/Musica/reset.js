@@ -14,6 +14,7 @@
       this.category = "Musica";
       this.description = "Comando para que eu limpe a fila!";
       this.usage = "reset";
+      this.aliases = ["stop"]
 
 
       this.enabled = true;
