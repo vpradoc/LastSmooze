@@ -39,6 +39,7 @@ dbIndex.start();
 const client = new Main({
   intents: 32767,
   allowedMentions: { parse: ["users", "roles"], repliedUser: true },
+  shardCount: 2,
 });
 
 const clientID = "bb423c23d4084466bd32b10974b2fe83";
