@@ -72,7 +72,10 @@ module.exports = class {
       const comando = await Command.findOne({ _id: cmd.name });
 
       if (comando) {
-        if (message.author.id !== "680943469228982357") {
+        let owners = ["680943469228982357", "600804786492932101"];
+        if (!owners.some((x) => x == message.author.id))
+
+        if (!owners.some((x) => x == message.author.id)) {
           if (comando.manutenção)
             return message.reply(
               `${Emojis.Smooze} - O comando **\`${cmd.name}\`** está em manutenção no momento!`
