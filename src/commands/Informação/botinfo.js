@@ -1,4 +1,5 @@
 const moment = require("moment");
+require("moment-duration-format");
 const discord = require("discord.js");
 const os = require("os");
 const Emojis = require("../../utils/Emojis");
@@ -28,9 +29,8 @@ module.exports = class Botinfo extends Command {
     const servsize = this.client.guilds.cache.size;
     const dev = this.client.users.cache.get("680943469228982357");
     const uptime = moment
-      .duration(this.client.uptime)
-      .format("h [horas] m [minutos] e s [segundos]")
-      .replace("minsutos", "minutos");
+      .duration(process.uptime() * 1000)
+      .format("d[d] h[h] m[m] e s[s]");
     const usersize = this.client.users.cache.size;
 
     const embed = new ClientEmbed(author)

@@ -62,39 +62,37 @@ module.exports = class Play extends Command {
       player.connect();
 
       if (result.loadType === "PLAYLIST_LOADED") {
-        for (const track of result.tracks) player.queue.push(track);
+        for (const track of result.tracks) {
+          player.queue.push(track);
+          track.setRequester(message.author);
+        }
 
         if (!player.playing) player.play();
 
         const embed = new ClientEmbed(message.author)
-          .setTitle(`${Emojis.CD} Playlist adicionada:`)
-          .addField(`${Emojis.Id} Nome:`, "`" + result.playlistInfo?.name + "`")
-          .addFields(
-            {
-              name: `${Emojis.Tempo} Duração:`,
-              value: `${formatTime(
-                convertMilliseconds(result.playlistInfo?.duration),
-                "hh:mm:ss"
-              )}`,
-              inline: true,
-            }
-          );
+          .setTitle(`Playlist Adicionada:`)
+          .setDescription(`[${result.playlistInfo.name}](${args[0]})`)
+          .addFields({
+            name: `${Emojis.Tempo} Duração:`,
+            value: `${formatTime(
+              convertMilliseconds(result.playlistInfo?.duration),
+              "hh:mm:ss"
+            )}`,
+            inline: true,
+          });
         message.reply({ embeds: [embed] });
       } else {
         const tracks = result.tracks;
         const msc = tracks[0];
+        msc.setRequester(message.author);
         player.queue.push(msc);
 
         if (message.client.manager.players.get(message.guild.id)) {
           const embed = new ClientEmbed(message.author)
-            .setTitle(`${Emojis.CD} Música adicionada:`)
+            .setTitle(`Música adicionada:`)
             .setThumbnail(msc.thumbnailUrl)
             .setDescription(
-              `**[${msc.title}](${msc.uri})** - [${message.author}]\n\n${Emojis.Nada}${
-                Emojis.Id
-              } **Canal:** \`${msc.author}\`\n${Emojis.Nada}${
-                Emojis.Tempo
-              } **Duração:** \`${ms(msc.duration)}\``
+              `**[${msc.title}](${msc.uri})** - [${message.author}]`
             );
 
           message.reply({ embeds: [embed] });

@@ -1,4 +1,6 @@
+const { DiscordAPIError } = require("discord.js");
 const Emojis = require("../../../utils/Emojis");
+const Discord = require("discord.js")
 
 module.exports = class {
   constructor(client) {
@@ -14,8 +16,12 @@ module.exports = class {
       if (msg) msg.delete();
     }
 
+    const Embed = new Discord.MessageEmbed()
+    .setDescription(`${Emojis.CD} | [${track.title}](${track.uri}) - [<@${track.requester.id}>]`)
+    .setColor("#759ffe")
+
     player.lastPlayingMsgID = await channel
-      .send(`${Emojis.CD} | Iniciando **${track.title}**.`)
+      .send({embeds: [Embed]})
       .then((x) => x.id);
   }
 };

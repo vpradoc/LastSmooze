@@ -23,11 +23,7 @@ module.exports = class Help extends Command {
       const data = [];
       const Musica = [];
       const Config = [];
-      const Diversão = [];
-      const Moderação = [];
       const Informação = [];
-      const Imagens = [];
-      const Outros = [];
       const { commands } = message.client;
 
       if (args[0]) {
@@ -82,47 +78,34 @@ module.exports = class Help extends Command {
         );
         commands.map((command) => {
           if (command.category === "Config") Config.push(command.name);
-          else if (command.category === "Diversão") Diversão.push(command.name);
-          else if (command.category === "Musica") Musica.push(command.name)
-          else if (command.category === "Imagens") Imagens.push(command.name);
+          else if (command.category === "Musica") Musica.push(command.name);
           else if (command.category === "Informação")
             Informação.push(command.name);
-          else if (command.category === "Outros") Outros.push(command.name);
-          else if (command.category === "Moderação")
-            Moderação.push(command.name);
         });
 
         HELP.addFields(
           {
-            name: `${Emojis.Engrenagem} [${this.client.commands.filter((x) => x.category == "Config").size}] | **Configuração » **`,
+            name: `${Emojis.Engrenagem} [${
+              this.client.commands.filter((x) => x.category == "Config").size
+            }] | **Configuração » **`,
             value: `\`${Config.map((x) => `${x}`).join(" | ")}\``,
           },
           {
-            name: `${Emojis.Toy} [${this.client.commands.filter((x) => x.category == "Diversão").size}] | **Diversão » **`,
-            value: `\`${Diversão.map((x) => `${x}`).join(" | ")}\``,
-          },
-          {
-            name: `${Emojis.Disco} [${this.client.commands.filter((x) => x.category == "Musica").size}] | **Musica » **`,
+            name: `${Emojis.Disco} [${
+              this.client.commands.filter((x) => x.category == "Musica").size
+            }] | **Musica » **`,
             value: `\`${Musica.map((x) => `${x}`).join(" | ")}\``,
           },
           {
-            name: `${Emojis.Camera} [${this.client.commands.filter((x) => x.category == "Imagens").size}] | **Imagens » **`,
-            value: `\`${Imagens.map((x) => `${x}`).join(" | ")}\``,
-          },
-          {
-            name: `${Emojis.Id} [${this.client.commands.filter((x) => x.category == "Informação").size}] | **Informação » **`,
+            name: `${Emojis.Id} [${
+              this.client.commands.filter((x) => x.category == "Informação")
+                .size
+            }] | **Informação » **`,
             value: `\`${Informação.map((x) => `${x}`).join(" | ")}\``,
-          },
-          {
-            name: `${Emojis.Robo} [${this.client.commands.filter((x) => x.category == "Moderação").size}] | **Moderação » **`,
-            value: `\`${Moderação.map((x) => `${x}`).join(" | ")}\``,
-          },
-          {
-            name: `${Emojis.Pergunta} [${this.client.commands.filter((x) => x.category == "Outros").size}] | **Outros » **`,
-            value: `\`${Outros.map((x) => `${x}`).join(" | ")}\``,
           }
-        )
-        .setImage(`https://cdn.discordapp.com/attachments/693473291158945805/869225851990986882/standard.gif`)
+        ).setImage(
+          `https://cdn.discordapp.com/attachments/693473291158945805/869225851990986882/standard.gif`
+        );
 
         await message.reply({ embeds: [HELP] });
       }

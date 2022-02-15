@@ -1,6 +1,5 @@
 const Command = require("../../structures/Command.js");
 const Emojis = require("../../utils/Emojis");
-utilz = require("util")
 module.exports = class Eval extends Command {
   constructor(client) {
     super(client);
@@ -32,7 +31,7 @@ module.exports = class Eval extends Command {
     try {
       let litchtotoso = eval(litchdelicia);
       if (typeof litchtotoso !== "string")
-      await utilz.inspect(litchtotoso, { depth: 0 });
+      litchtotoso = require("util").inspect(litchtotoso, { depth: 0 });
       
       message.reply(
         `:outbox_tray: \`\`\`js\n${litchtotoso}\`\`\``);

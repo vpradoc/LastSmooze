@@ -38,16 +38,11 @@ module.exports = class Skip extends Command {
         `${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu para modificar a fila!`
       );
 
-    if (!player.queue.current)
-      return message.reply(
-        `${Emojis.Errado} **|** Não tem nenhuma música na fila!`
-      );
 
-    const { title } = player.queue.current;
-
-    player.stop();
+    const title = message.client.manager.players.get(message.guild.id).current.title
+    player.skip();
     return message.channel.send(`**${title}** Pulado!`).then((msg) => {
-      this.client.setTimeout(() => msg.delete(), 10000);
+      setTimeout(() => msg.delete(), 15000);
     });
   }
 };
