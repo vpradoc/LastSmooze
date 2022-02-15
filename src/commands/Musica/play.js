@@ -1,7 +1,7 @@
 const Command = require("../../structures/Command");
 const ClientEmbed = require("../../structures/ClientEmbed");
 const Emojis = require("../../utils/Emojis");
-const ms = require('ms')
+const ms = require("ms");
 
 module.exports = class Play extends Command {
   constructor(client) {
@@ -19,22 +19,21 @@ module.exports = class Play extends Command {
   }
 
   async run(message, args, author) {
-    const player2 = message.client.manager.players.get(message.guild.id);
-
     try {
-      if (player2) {
-        if (
-          message.member.voice.channel.id != message.guild.me.voice.channel.id
-        )
-          return message.reply(
-            `${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu estou para modificar a fila!`
-          );
+      if (
+        message.client.manager.players.get(message.guild.id) != null &&
+        message.member.voice.channel.id != message.guild.me.voice.channel.id
+      ) {
+        return message.reply(
+          `${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu estou para modificar a fila!`
+        );
       }
 
       if (!message.member.voice.channel)
         return message.reply(
           `${Emojis.Errado} **|** Você precisa estar em um canal!`
         );
+
       const music = args.join(" ");
 
       if (!music)
@@ -42,7 +41,7 @@ module.exports = class Play extends Command {
           `${Emojis.Errado} **|** Você precisa estar inserir um link/nome de música!`
         );
 
-      const result = await this.client.manager.search(music, message.author);
+      const result = await message.client.manager.search(music, message.author);
 
       if (result.loadType === "LOAD_FAILED")
         return message.reply(
@@ -53,37 +52,28 @@ module.exports = class Play extends Command {
           `${Emojis.Errado} **|** Não encontrei uma música válida!`
         );
 
-      message.reply(`${Emojis.Fone} **|** Pesquisando: **\`${music}\`**.`);
-
-      const player = this.client.manager.create({
-        guild: message.guild.id,
-        voiceChannel: message.member.voice.channel.id,
-        textChannel: message.channel.id,
-        selfDeafen: true,
+      const player = message.client.manager.createPlayer({
+        guildId: message.guild.id,
+        voiceChannelId: message.member.voice.channel.id,
+        textChannelId: message.channel.id,
+        selfDeaf: true,
       });
 
-      if (player.state === "DISCONNECTED") player.connect();
+      player.connect();
 
       if (result.loadType === "PLAYLIST_LOADED") {
-        const playlist = result.playlist;
-
-        for (const track of result.tracks) player.queue.add(track);
+        for (const track of result.tracks) player.queue.push(track);
 
         if (!player.playing) player.play();
 
         const embed = new ClientEmbed(message.author)
           .setTitle(`${Emojis.CD} Playlist adicionada:`)
-          .addField(`${Emojis.Id} Nome:`, "`" + playlist?.name + "`")
+          .addField(`${Emojis.Id} Nome:`, "`" + result.playlistInfo?.name + "`")
           .addFields(
-            {
-              name: `${Emojis.Toy} Quantidade:`,
-              value: `${result.tracks.length}`,
-              inline: true,
-            },
             {
               name: `${Emojis.Tempo} Duração:`,
               value: `${formatTime(
-                convertMilliseconds(result.playlist.duration),
+                convertMilliseconds(result.playlistInfo?.duration),
                 "hh:mm:ss"
               )}`,
               inline: true,
@@ -92,21 +82,19 @@ module.exports = class Play extends Command {
         message.reply({ embeds: [embed] });
       } else {
         const tracks = result.tracks;
+        const msc = tracks[0];
+        player.queue.push(msc);
 
-        player.queue.add(tracks[0]);
-
-        if (player2) {
+        if (message.client.manager.players.get(message.guild.id)) {
           const embed = new ClientEmbed(message.author)
-            .setTitle(`${Emojis.CD} Iniciando:`)
-            .setThumbnail(result.tracks[0].displayThumbnail("maxresdefault"))
+            .setTitle(`${Emojis.CD} Música adicionada:`)
+            .setThumbnail(msc.thumbnailUrl)
             .setDescription(
-              `**[${result.tracks[0].title}](${
-                result.tracks[0].uri
-              })** - [${author}]\n\n${Emojis.Nada}${Emojis.Id} **Canal:** \`${
-                result.tracks[0].author
-              }\`\n${Emojis.Nada}${Emojis.Tempo} **Duração:** \`${ms(
-                result.tracks[0].duration
-              )}\``
+              `**[${msc.title}](${msc.uri})** - [${message.author}]\n\n${Emojis.Nada}${
+                Emojis.Id
+              } **Canal:** \`${msc.author}\`\n${Emojis.Nada}${
+                Emojis.Tempo
+              } **Duração:** \`${ms(msc.duration)}\``
             );
 
           message.reply({ embeds: [embed] });
@@ -116,27 +104,34 @@ module.exports = class Play extends Command {
       }
     } catch (err) {
       if (err) console.log(err);
-      return message.reply(`${Emojis.Errado} **|** Erro ao executar o comando!`);
+      return message.reply(
+        `${Emojis.Errado} **|** Erro ao executar o comando!`
+      );
     }
-  
-  function convertMilliseconds(ms) {
-    const seconds = ~~(ms / 1000);
-    const minutes = ~~(seconds / 60);
-    const hours = ~~(minutes / 60);
 
-    return { hours: hours % 24, minutes: minutes % 60, seconds: seconds % 60 };
+    function convertMilliseconds(ms) {
+      const seconds = ~~(ms / 1000);
+      const minutes = ~~(seconds / 60);
+      const hours = ~~(minutes / 60);
+
+      return {
+        hours: hours % 24,
+        minutes: minutes % 60,
+        seconds: seconds % 60,
+      };
+    }
+
+    function formatTime(time, format, twoDigits = true) {
+      const formats = {
+        dd: "days",
+        hh: "hours",
+        mm: "minutes",
+        ss: "seconds",
+      };
+
+      return format.replace(/dd|hh|mm|ss/g, (match) =>
+        time[formats[match]].toString().padStart(twoDigits ? 2 : 0, "0")
+      );
+    }
   }
-
-  function formatTime(time, format, twoDigits = true) {
-    const formats = {
-      dd: "days",
-      hh: "hours",
-      mm: "minutes",
-      ss: "seconds",
-    };
-
-    return format.replace(/dd|hh|mm|ss/g, (match) =>
-      time[formats[match]].toString().padStart(twoDigits ? 2 : 0, "0")
-    );
-  }}
 };

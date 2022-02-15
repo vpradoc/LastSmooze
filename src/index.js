@@ -3,10 +3,8 @@ const klaw = require("klaw");
 const path = require("path");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
-const { Manager } = require("erela.js");
-const Spotify = require("erela.js-spotify");
-const Emojis = require('../src/utils/Emojis')
-
+const { Vulkava } = require("vulkava");
+const c = require("colors")
 class Main extends Client {
   constructor(options) {
     super(options);
@@ -37,137 +35,23 @@ const dbIndex = require("./database/index.js");
 dbIndex.start();
 
 const client = new Main({
-  intents: 32767,
+  intents: 641,
   allowedMentions: { parse: ["users", "roles"], repliedUser: true },
-  shardCount: 2,
 });
 
-const clientID = "bb423c23d4084466bd32b10974b2fe83";
-const clientSecret = "59d1dee435f74bb4abce8bd9eba08d9f";
-
-client.manager = new Manager({
+client.manager = new Vulkava({
   nodes: [
     {
-        identifier: 'Node 1',
-        host: 'smoozelavaa.herokuapp.com',
-        port: 80,
-        password: "testando",
-        retryAmount: 30,
-        retryDelay: 3000,
-        secure: false
-    }
-],
-  send(id, payload) {
-      const guild = client.guilds.cache.get(id);
-      if (guild) guild.shard.send(payload);
+      id: "Node 1",
+      hostname: "smoozelava.herokuapp.com",
+      port: 80,
+      password: "vpc1",
     },
-    plugins: [
-      
-      new Spotify({
-        playlistLimit: undefined,
-        albumLimit: undefined,
-        clientID,
-        clientSecret,
-      }),
-    ],
-  })
-
-  client.lavalinkPings = new Map();
-
-
-  client.manager.on("trackStart", async (player, track) => {
-    const channel = client.channels.cache.get(player.textChannel);
-    
-    if (player.lastPlayingMsgID) {
-      const msg = channel.messages.cache.get(player.lastPlayingMsgID);
-
-      if (msg) msg.delete();
-    }
-
-    player.lastPlayingMsgID = await channel
-      .send(`${Emojis.CD} | Iniciando **${track.title}**, pedido por \`${track.requester.tag}\`.`)
-      .then((x) => x.id);
-
-  });
-
-  client.manager.on("queueEnd", player => {
-    const channel = client.channels.cache.get(player.textChannel);
-    channel.send(`${Emojis.Certo} » Fila de músicas acabou, saí do canal!`);
-    return player.destroy()
-  })
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-client.manager.on('nodeConnect', (node) => {
-  client.lavalinkPings.set(node.identifier, {});
-	const sendPing = () => {
-		node.send({
-			op: 'ping'
-		})
-	};
-	sendPing();
-	setInterval(() => {
-		sendPing();
-	}, 45000);
-  console.log(`Lavalink CONECTADO!`)
+  ],
+  sendWS: (guildId, payload) => {
+    client.guilds.cache.get(guildId)?.shard.send(payload);
+  },
 });
-
-
-client.on("voiceStateUpdate", (oldState, newState)=> {
-
-  const guild = newState.guild
-  const user = newState.member
-  const player = client.manager.players.get(guild.id);
-
-  if (
-    !newState.channelID &&
-    user.id !== client.user.id &&
-    player &&
-    player.voiceChannel === oldState.channelID
-  ) {
-    if (oldState.channel.members.filter((c) => !c.user.bot).size === 0) {
-      player.pause(true);
-  
-      client.channels.cache
-        .get(player.textChannel)
-        .send(`${Emojis.Microfone} » Vou sair do canal em **2 minutos** caso fique sozinho!`)
-  
-      setTimeout(() => {
-        if (!player) return;
-  
-        if (oldState.channel.members.filter((c) => !c.user.bot).size > 0) return;
-  
-        player.destroy();
-  
-        return client.channels.cache
-          .get(player.textChannel)
-          .send(`${Emojis.Fone} » Saí do canal!`);
-      }, 2 * 60000);
-    }
-  } else if (
-    newState.channel &&
-    newState.channel.members.filter((c) => !c.user.bot).size === 1 &&
-    player &&
-    player.voiceChannel === newState.channelID
-  ) {
-    player.pause(false);
-  }
-})
-
-client.manager.on('nodeError', (node, error) => {
-	if (error && error.message.includes('"pong"')) {
-		const lavalinkPing = client.lavalinkPings.get(node.identifier);
-		lavalinkPing.ping = Date.now() - lavalinkPing.lastPingSent;
-		return;
-	}
-	console.log(`[Lavalink]: Ocorreu um erro no node ${node.identifier}.\nErro: ${error.message}`);
-});
-
-client.manager.on("trackError", (player, track) => {
-  const channel = client.channels.cache.get(player.textChannel);
-    channel.send(`${Emojis.Errado} » Erro ao colher informações da música **(${track.title})**!`);
-    player.stop();
-})
-//////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-
 
 const onLoad = async () => {
   klaw("src/commands").on("data", (item) => {
@@ -177,14 +61,29 @@ const onLoad = async () => {
     if (response) return;
   });
 
-  const eventFiles = await readdir("./src/client/listeningIn/");
-  eventFiles.forEach((file) => {
+  const discordEvents = await readdir("./src/client/Events/Discord");
+  discordEvents.forEach((file) => {
     const eventName = file.split(".")[0];
-    const event = new (require(`./client/listeningIn/${file}`))(client);
+    const event = new (require(`./client/Events/Discord/${file}`))(client);
     client.on(eventName, (...args) => event.run(...args));
-    delete require.cache[require.resolve(`./client/listeningIn/${file}`)];
+    delete require.cache[require.resolve(`./client/Events/Discord/${file}`)];
   });
 
+  const processEvents = await readdir("./src/client/Events/Process");
+  processEvents.forEach((file) => {
+    const eventName = file.split(".")[0];
+    const event = new (require(`./client/Events/Process/${file}`))(client);
+    process.on(eventName, (...args) => event.run(...args));
+    delete require.cache[require.resolve(`./client/Events/Process/${file}`)];
+  });
+
+  const musicEvents = await readdir("./src/client/Events/Music");
+  musicEvents.forEach((file) => {
+    const eventName = file.split(".")[0];
+    const event = new (require(`./client/Events/Music/${file}`))(client);
+    client.manager.on(eventName, (...args) => event.run(...args));
+    delete require.cache[require.resolve(`./client/Events/Music/${file}`)];
+  });
 
   client.login();
 };

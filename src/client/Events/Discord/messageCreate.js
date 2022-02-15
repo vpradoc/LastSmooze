@@ -1,11 +1,11 @@
-const Guild = require("../../database/Schemas/Guild"),
-  User = require("../../database/Schemas/User"),
-  Command = require("../../database/Schemas/Command"),
-  ClientS = require("../../database/Schemas/Client");
+const Guild = require("../../../database/Schemas/Guild"),
+  User = require("../../../database/Schemas/User"),
+  Command = require("../../../database/Schemas/Command"),
+  ClientS = require("../../../database/Schemas/Client");
 const GetMention = (id) => new RegExp(`^<@!?${id}>( |)$`);
-const ClientEmbed = require("../../structures/ClientEmbed");
+const ClientEmbed = require("../../../structures/ClientEmbed");
 const moment = require("moment");
-const Emojis = require("../../utils/Emojis");
+const Emojis = require("../../../utils/Emojis");
 const coldoown = new Set();
 
 module.exports = class {
@@ -50,7 +50,9 @@ module.exports = class {
       if (user.blacklist) return;
 
       if (message.content.match(GetMention(this.client.user.id))) {
-        message.reply(`${Emojis.Ola} | Olá ${message.author}, sou o **Smooze**. Meu prefixo aqui é \`${server.prefix}\`, use **${server.prefix}ajuda** para saber minhas funcionalidades!`)
+        message.reply(
+          `${Emojis.Ola} | Olá ${message.author}, sou o **Smooze**. Meu prefixo aqui é \`${server.prefix}\`, use **${server.prefix}ajuda** para saber minhas funcionalidades!`
+        );
       }
 
       user = await User.findOne({ _id: message.author.id });
@@ -92,7 +94,11 @@ module.exports = class {
         var num = comando.usages;
         num = num + 1;
 
-        if (!["680943469228982357", "600804786492932101"].includes(message.author.id)) {
+        if (
+          !["680943469228982357", "600804786492932101"].includes(
+            message.author.id
+          )
+        ) {
           coldoown.add(message.author.id);
           setTimeout(() => {
             coldoown.delete(message.author.id);

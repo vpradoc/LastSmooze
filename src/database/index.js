@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const c = require("colors")
 
 module.exports = {
 
@@ -11,10 +12,10 @@ module.exports = {
                 useFindAndModify: false
             })
 
-            console.log('Mongoose Conectada!')
+            console.log(c.blue(`🎲 [DATABASE] - Moongose Conectada!`))
 
         } catch(err) {
-            if(err) return console.log('Database error:' + err)
+            if(err) return console.log(c.red('🔴 [DATABASE] - Erro:' + err))
         }
     }
 
