@@ -42,7 +42,7 @@ const client = new Main({
 client.manager = new Vulkava({
   nodes: [
     {
-      id: "Node 1",
+      id: "Smooze 1",
       hostname: "smoozelava.herokuapp.com",
       port: 80,
       password: "vpc1",

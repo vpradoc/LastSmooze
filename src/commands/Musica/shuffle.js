@@ -31,19 +31,12 @@ module.exports = class Shuffle extends Command {
     }
     const player = this.client.manager.players.get(message.guild.id);
 
-    const { channel } = message.member.voice;
-
-    if (!channel)
-      return message.reply(
-        `${Emojis.Errado} **|** Você precisa estar em um canal para modificar a ordem de músicas!`
-      );
-
     if (!player || !player.queue[0])
       return message.channel.send(
         `${Emojis.Errado} **|** Não encontrei músicas na fila!`
       );
   else
-      player.queue.shuffle(true);
+      player.shuffleQueue(true);
       return message.channel.send(`${Emojis.Certo} **|** Ativado!`);
   }
 };

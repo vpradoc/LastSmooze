@@ -25,10 +25,10 @@ module.exports = class Loop extends Command {
     }
     const player = message.client.manager.players.get(message.guild.id)
     if (player.queueRepeat === true) {
-      player.setQueueRepeat(false);
+      player.setQueueLoop(false);
       message.channel.send(`${Emojis.Certo} **|** Loop desativado!`);
     } else {
-      player.setQueueRepeat(true);
+      player.setQueueLoop(true);
       message.channel.send(`${Emojis.Certo} **|** Loop ativado!`);
     }
       }

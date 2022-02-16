@@ -25,13 +25,13 @@ module.exports = class LavaStats extends Command {
     
     const startLL = process.hrtime();
     await fetch(`https://smoozelava.herokuapp.com/version`, {
-  headers: { Authorization: "testando" }
+  headers: { Authorization: "vpc1" }
     });
     const stopLL = process.hrtime(startLL);
 
     const LavaLinkPing = Math.round(((stopLL[0] * 1e9) + stopLL[1]) / 1e6)
     
-    const node = message.client.manager.nodes.first();
+    const node = message.client.manager.nodes[0]
 
 
     const EMBED = new ClientEmbed(author)
@@ -39,7 +39,7 @@ module.exports = class LavaStats extends Command {
       .addFields(
         {
           name: `${Emojis.Id} Nome:`,
-          value: `${node.options.identifier}`,
+          value: `${node.options.id}`,
         },
         {
           name: `${Emojis.Device} Players Conectados:`,

@@ -27,15 +27,15 @@ module.exports = class LoopTrack extends Command {
 
     const player = message.client.manager.players.get(message.guild.id)
     
-    if (player.queueRepeat) {
+    if (!player.trackRepeat) {
         message.reply(`${Emojis.Certo} **|** Música colocada em loop!`);
-        player.setQueueRepeat(false);
-      }
+        player.setTrackLoop(true);
+      } else {
 
-      player.setTrackRepeat(!player.trackRepeat);
+      player.setTrackLoop(false);
 
-      return message.reply(`${Emojis.Certo} **|** Música colocada em loop!`);
+      return message.reply(`${Emojis.Certo} **|** Música retirada do loop!`);
 
-      }
+      }}
   }
 

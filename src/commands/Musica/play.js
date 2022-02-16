@@ -80,6 +80,7 @@ module.exports = class Play extends Command {
             )}`,
             inline: true,
           });
+
         message.reply({ embeds: [embed] });
       } else {
         const tracks = result.tracks;
