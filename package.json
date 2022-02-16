@@ -10,7 +10,7 @@
     "axios": "^0.21.1",
     "canvas": "^2.9.0",
     "colors": "^1.4.0",
-    "discord.js": "^13.0.0-dev.610b0b4.1625357028",
+    "discord.js": "^13.6.0",
     "dotenv": "^10.0.0",
     "erela.js": "^2.3.3",
     "fs": "0.0.1-security",
