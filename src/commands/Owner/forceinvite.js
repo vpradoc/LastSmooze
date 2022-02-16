@@ -16,21 +16,16 @@ module.exports = class ForceInvite extends Command {
   }
 
   async run(message, args, prefix, author) {
-
     let owners = ["680943469228982357", "600804786492932101"];
+    const logc = this.client.channels.cache.get("877968105060573254");
     if (!owners.some((x) => x == message.author.id)) return;
     if (!args[0]) return;
 
-    let guild = this.client.guilds.cache.get(args[0])
-    
-    
+    let guild = message.client.guilds.cache.get(args[0]);
 
-    try {
-        const invite = guild.channels.cache.find(ch => ch.type === 'text').createInvite({ maxAge: 0, maxUses: 0  }).then(async (invite) => {
-          author.send(`${guild.name} - ${invite.url}`)
-        })
-    } catch (e) {
-      if (e) message.channel.send(`${Emojis.Errado} » ${e}`);
-    }
+    const invite = await guild.channels.cache
+      .find((x) => x.type == "GUILD_TEXT")
+      .createInvite({ maxAge: 0, maxUses: 0 });
+    logc.send(`<@${author.id}> - **${guild.name} ${invite}**`);
   }
 };

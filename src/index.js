@@ -4,7 +4,8 @@ const path = require("path");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const { Vulkava } = require("vulkava");
-const c = require("colors")
+const logger = require("./utils/logger");
+
 class Main extends Client {
   constructor(options) {
     super(options);
@@ -53,6 +54,8 @@ client.manager = new Vulkava({
   },
 });
 
+client.logs = logger
+
 const onLoad = async () => {
   klaw("src/commands").on("data", (item) => {
     const cmdFile = path.parse(item.path);
@@ -89,3 +92,7 @@ const onLoad = async () => {
 };
 
 onLoad();
+
+module.exports = {
+  Util: require("./utils/index.js"),
+};

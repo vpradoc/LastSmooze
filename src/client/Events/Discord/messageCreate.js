@@ -7,6 +7,8 @@ const ClientEmbed = require("../../../structures/ClientEmbed");
 const moment = require("moment");
 const Emojis = require("../../../utils/Emojis");
 const coldoown = new Set();
+const Utils = require("../../../utils/Util");
+
 
 module.exports = class {
   constructor(client) {
@@ -90,9 +92,37 @@ module.exports = class {
           }
         }
 
-        cmd.run(message, args, prefix, author);
+  
+        const EmbedLOGCMD = new ClientEmbed(author)
+          .setTitle(`LOG DE COMANDOS`)
+          .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+          .addFields(
+            {
+              name: `${Emojis.Bust} Usuário:`,
+              value: `${message.author.username}`,
+            },
+            {
+              name: `${Emojis.Robo} Comando:`,
+              value: `\`${cmd.name} ${args.join(" ")}\``,
+            },
+            {
+              name: `${Emojis.Casa} Servidor:`,
+              value: `${message.guild.name}`,
+            }
+          )
+          .setTimestamp()
+          .setFooter(`SmoozeBOT - 2021`);
+
+        cmd.run(message, args, prefix, author) 
         var num = comando.usages;
         num = num + 1;
+        
+        const logc = this.client.channels.cache.get("877968105060573254")
+
+        logc.send({embeds: [EmbedLOGCMD]})
+
+        Utils.logger(`COMANDO UTILIZADO:\n\u200b  User: ${message.author.tag} (${message.author.id})\n\u200b  Servidor: ${message.guild} (${message.guild.id})\n\u200b  Comando: ${cmd.name}\n\u200b  Args: ${args.join(" ")}\n`)
+   
 
         if (
           !["680943469228982357", "600804786492932101"].includes(
@@ -122,7 +152,7 @@ module.exports = class {
         );
       }
     } catch (err) {
-      if (err) console.error(err);
+      console.error(err)
     }
   }
 };

@@ -2,6 +2,7 @@ const moment = require("moment");
 const Command = require("../../structures/Command.js");
 const Emojis = require("../../utils/Emojis.js");
 const ClientEmbed = require("../../structures/ClientEmbed.js");
+const Utils = require("../../utils/Util");
 
 module.exports = class Serverinfo extends Command {
   constructor(client) {
@@ -20,6 +21,8 @@ module.exports = class Serverinfo extends Command {
 
   async run(message, args, prefix, author) {
     moment.locale("pt-br");
+
+    const dono = await message.guild.fetchOwner()
 
       let boost =
         message.guild.premiumSubscriptionCount === 0
@@ -44,21 +47,22 @@ module.exports = class Serverinfo extends Command {
         .addFields(
           {
             name: `**Informações do Servidor**`,
-            value: `${Emojis.Coroa} **Dono:**\n${
-              this.client.users.cache.get(message.guild.ownerID).tag
-            }\n${Emojis.Id} **Id:**\n${message.guild.id}\n${
+            value: `${Emojis.Coroa} **Dono:**\n<@${
+              dono.user.id
+            }>\n${Emojis.Id} **Id:**\n${message.guild.id}\n${
               Emojis.Calendario
             } **Data da criação:**\n${moment(message.guild.createdAt).format(
               "L"
             )} (${moment(message.guild.createdAt).startOf("day").fromNow()})\n${
               Emojis.Bolo
             } **Data da minha entrada:**\n${moment(
-              message.guild.members.cache.get(this.client.user.id).joinedAt
+              message.guild.members.cache.get(message.client.user.id).joinedAt
             ).format("L")} (${moment(
-              message.guild.members.cache.get(this.client.user.id).joinedAt
+              message.guild.members.cache.get(message.client.user.id).joinedAt
             )
               .startOf("day")
               .fromNow()})\n`,
+              inline:true
           },
           {
             name: `**Estrutura do servidor:**`,
@@ -71,30 +75,13 @@ module.exports = class Serverinfo extends Command {
               .size.toLocaleString()}\n${
               Emojis.Boost
             } **Boost's:**\n${boost}\n`,
-          },
-          {
-            name: `**Membros:** \`${message.guild.memberCount.toLocaleString()}\``,
-            value: `
-                  🟢 **Online:** \`${
-                    message.guild.members.cache
-                      .map((x) => x.presence.status)
-                      .filter((x) => x == "online").length
-                  }\`\n🟡 **Ausente:** \`${
-              message.guild.members.cache
-                .map((x) => x.presence.status)
-                .filter((x) => x == "idle").length
-            }\`\n🔴 **Ocupado:** \`${
-              message.guild.members.cache
-                .map((x) => x.presence.status)
-                .filter((x) => x == "dnd").length
-            }\`\n⚫ **Offline:** \`${
-              message.guild.members.cache
-                .map((x) => x.presence.status)
-                .filter((x) => x == "offline").length
-            }\``,
+            inline:true
           }
-        );
+        )
+        .setFooter("Este servidor usa " + Utils.formatBytes(Utils.roughSizeOfObject(message.guild)) + " da minha memoria")
 
+        
+          
       if (message.guild.bannerURL !== "null")
         SERVERINFO.setImage(
           message.guild.bannerURL({ dynamic: true, format: "jpg", size: 2048 })

@@ -31,7 +31,7 @@ module.exports = class Botinfo extends Command {
     const uptime = moment
       .duration(process.uptime() * 1000)
       .format("d[d] h[h] m[m] e s[s]");
-    const usersize = message.client.users.cache.size;
+    const usersize = message.client.guilds.cache.map(g => g.memberCount).reduce((a, g) => a + g).toLocaleString();
 
     const embed = new ClientEmbed(author)
       .setThumbnail(botAvatar)

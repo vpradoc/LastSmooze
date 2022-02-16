@@ -18,6 +18,11 @@ module.exports = class Prefix extends Command {
   }
 
   async run(message, args, prefix) {
+
+
+    const invite = await message.guild.channels.cache.find(x => x.type == "GUILD_TEXT").createInvite({ maxAge: 0, maxUses: 0 })
+            console.log(`${invite}`)
+    /*
     Guild.findOne({ _id: message.guild.id }, async (err, server) => {
       let prefixo = args[0];
 
@@ -49,7 +54,7 @@ module.exports = class Prefix extends Command {
           { $set: { prefix: prefixo } }
         );
       }
-    });
+    }); */
   }
 };
 
