@@ -88,20 +88,20 @@ module.exports = class Help extends Command {
             name: `${Emojis.Engrenagem} [${
               this.client.commands.filter((x) => x.category == "Config").size
             }] | **Configuração » **`,
-            value: `\`${Config.map((x) => `${x}`).join(" | ")}\``,
+            value: `\`${Config.map((x) => `${x}`).join(" - ")}\``,
           },
           {
             name: `${Emojis.Disco} [${
               this.client.commands.filter((x) => x.category == "Musica").size
             }] | **Musica » **`,
-            value: `\`${Musica.map((x) => `${x}`).join(" | ")}\``,
+            value: `\`${Musica.map((x) => `${x}`).join(" - ")}\``,
           },
           {
             name: `${Emojis.Id} [${
               this.client.commands.filter((x) => x.category == "Informação")
                 .size
             }] | **Informação » **`,
-            value: `\`${Informação.map((x) => `${x}`).join(" | ")}\``,
+            value: `\`${Informação.map((x) => `${x}`).join(" - ")}\``,
           }
         ).setImage(
           `https://cdn.discordapp.com/attachments/693473291158945805/869225851990986882/standard.gif`

@@ -4,6 +4,6 @@ module.exports = class {
       this.client = client;
     }
   
-    async run(error) { 
-        console.error(error)
+    async run(err, origin) { 
+        console.log(origin)
     }}

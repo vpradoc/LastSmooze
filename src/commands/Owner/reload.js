@@ -36,6 +36,7 @@ module.exports = class Blacklist extends Command {
       let props = new (require(`${commandPath}/${commandName}`))(this);
       delete require.cache[require.resolve(`${commandPath}/${commandName}`)];
 
+      this.client = message.client
       this.client.commands.set(props.name, props);
     };
     const response = reload(cmdFile.dir, `${cmdFile.name}${cmdFile.ext}`);

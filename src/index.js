@@ -54,7 +54,7 @@ client.manager = new Vulkava({
   },
 });
 
-client.logs = logger
+client.logs = logger;
 
 const onLoad = async () => {
   klaw("src/commands").on("data", (item) => {

@@ -9,7 +9,6 @@ const Emojis = require("../../../utils/Emojis");
 const coldoown = new Set();
 const Utils = require("../../../utils/Util");
 
-
 module.exports = class {
   constructor(client) {
     this.client = client;
@@ -18,7 +17,6 @@ module.exports = class {
   async run(message) {
     moment.locale("pt-BR");
 
-    try {
       let server = await Guild.findOne({ _id: message.guild.id });
       let user = await User.findOne({ _id: message.author.id });
       const client = await ClientS.findOne({ _id: this.client.user.id });
@@ -52,9 +50,19 @@ module.exports = class {
       if (user.blacklist) return;
 
       if (message.content.match(GetMention(this.client.user.id))) {
-        message.reply(
-          `${Emojis.Ola} | Olá ${message.author}, sou o **Smooze**. Meu prefixo aqui é \`${server.prefix}\`, use **${server.prefix}ajuda** para saber minhas funcionalidades!`
-        );
+        const EmbedMention = new ClientEmbed(message.author)
+          .setTitle(`${Emojis.Ola} | Olá, sou o **Smooze**.`)
+          .setDescription(
+            `${Emojis.Toy} **|** Meu prefixo aqui é \`${server.prefix}\`, use **${server.prefix}ajuda** para saber minhas funcionalidades!\n\n${Emojis.Bust} **|** Caso tenha algum outro bot com o mesmo prefixo, você pode usar \`@${this.client.user.username} prefix <prefixo>\` para que o mesmo seja alterado!`
+          )
+          .setImage(
+            `https://cdn.discordapp.com/attachments/693473291158945805/892790061811257344/banner1.png`
+          )
+          .setFooter(
+            `${this.client.user.tag}`,
+            this.client.user.displayAvatarURL({ dynamic: true })
+          );
+        message.reply({ embeds: [EmbedMention] });
       }
 
       user = await User.findOne({ _id: message.author.id });
@@ -92,7 +100,6 @@ module.exports = class {
           }
         }
 
-  
         const EmbedLOGCMD = new ClientEmbed(author)
           .setTitle(`LOG DE COMANDOS`)
           .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
@@ -112,17 +119,24 @@ module.exports = class {
           )
           .setTimestamp()
           .setFooter(`SmoozeBOT - 2021`);
+          
+          const logc = this.client.channels.cache.get("877968105060573254");
 
-        cmd.run(message, args, prefix, author) 
-        var num = comando.usages;
-        num = num + 1;
-        
-        const logc = this.client.channels.cache.get("877968105060573254")
+          try {
 
-        logc.send({embeds: [EmbedLOGCMD]})
+          await cmd.run(message, args, prefix, author);
+          var num = comando.usages;
+          num = num + 1;
 
+          }catch(error) {
+            Utils.Error(error, logc, message, cmd)
+          }
+
+
+        logc.send({ embeds: [EmbedLOGCMD] });
+        /*
         Utils.logger(`COMANDO UTILIZADO:\n\u200b  User: ${message.author.tag} (${message.author.id})\n\u200b  Servidor: ${message.guild} (${message.guild.id})\n\u200b  Comando: ${cmd.name}\n\u200b  Args: ${args.join(" ")}\n`)
-   
+   */
 
         if (
           !["680943469228982357", "600804786492932101"].includes(
@@ -151,8 +165,5 @@ module.exports = class {
           `O comando ${cmd.name} teve seu documento criado com sucesso.`
         );
       }
-    } catch (err) {
-      console.error(err)
-    }
   }
 };
