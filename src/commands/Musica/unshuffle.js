@@ -9,10 +9,10 @@ module.exports = class Shuffle extends Command {
     super(client);
     this.client = client;
 
-    this.name = "shuffle";
+    this.name = "unshuffle";
     this.category = "Musica";
-    this.description = "Comando para que eu toque músicas aleatórias da fila!";
-    this.usage = "shuffle";
+    this.description = "Comando para que eu pare de tocar músicas aleatórias da fila!";
+    this.usage = "unshuffle";
 
     this.enabled = true;
     this.guildOnly = true;
@@ -31,8 +31,8 @@ module.exports = class Shuffle extends Command {
           `${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu estou para modificar a fila!`
         );
     }
-
-      player.shuffleQueue(true);
+    
+      player.shuffleQueue(false);
       return message.react(`👌`);
   }
 };

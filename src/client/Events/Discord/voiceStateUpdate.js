@@ -17,6 +17,9 @@ module.exports = class {
           player &&
           player.voiceChannelId === oldState.channelID
         ) {
+
+          console.log(`ih ih`)
+
           if (oldState.channel.members.filter((c) => !c.user.bot).size === 0) {
             player.pause(true);
       
@@ -34,9 +37,6 @@ module.exports = class {
       
               player.destroy();
       
-              return this.client.channels.cache
-                .get(player.textChannelId)
-                .send(`${Emojis.Fone} » Saí do canal!`);
             }, 2 * 60000);
           }
         } else if (
@@ -47,6 +47,5 @@ module.exports = class {
         ) {
           player.pause(false);
         }
-
 
     }}

@@ -1,7 +1,8 @@
 const Command = require("../../structures/Command");
 const Emojis = require("../../utils/Emojis");
 const ClientEmbed = require("../../structures/ClientEmbed");
-const ms = require("ms");
+const moment = require("moment")
+require("moment-duration-format")
 const { MessageButton, MessageActionRow, Collection } = require("discord.js");
 
 module.exports = class Queue extends Command {
@@ -37,24 +38,41 @@ module.exports = class Queue extends Command {
         const title = player.queue[pos].title;
         const uri = player.queue[pos].uri;
         data.push(
-          `\`${pos + 1}\` - [${shorten(title, 25)}](${uri})  [${formatTime(
-            convertMilliseconds(duration),
-            "hh:mm:ss"
-          )}]`
+          `\`${pos + 1}\` - [${shorten(title, 25)}](${uri})     \`${moment
+            .duration(duration)
+            .format("HH:mm:ss")}\``
         );
       }
       return data.join("\n");
     };
     
+    let arg
 
+    arg = args[0]
+
+    if(!args[0]) arg = 0
+
+    if(isNaN(arg)) arg = 0
+
+    const arraylength = Math.floor(player.queue.length / 10)
+    
+    if(arg >= arraylength + 2) arg = 0
+    
+    let inicial = arg * 10 - 10
+
+    if(arg == 0) inicial = 0
+
+    let final = inicial + 10
 
     const embed = new ClientEmbed(author);
 
     embed.setDescription(`**Tocando agora: [${player.current.title}](${
       player.current.uri
-    })**\n\n${getSongDetails(0, 5)}`
+    })**\n\n${getSongDetails(inicial, final)}`
   );
-
+    if(arg == 0) arg = 1
+    embed.setFooter(`Página: ${arg}/${arraylength} • ${author.tag}`)
+    embed.setTimestamp()
 
     message.reply({
       embeds: [embed]

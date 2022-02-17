@@ -20,7 +20,11 @@ module.exports = class Skip extends Command {
     const player = message.client.manager.players.get(message.guild.id);
 
     if (message.guild.me.voice.channel != null) {
-      if (message.member.voice.channel.id != message.guild.me.voice.channel.id)
+      if (
+        (message.member.voice.channel.id !=
+          message.guild.me.voice.channel.id) ===
+        true
+      )
         return message.reply(
           `${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu estou para modificar a fila!`
         );
@@ -41,8 +45,6 @@ module.exports = class Skip extends Command {
 
     const title = message.client.manager.players.get(message.guild.id).current.title
     player.skip();
-    return message.channel.send(`**${title}** Pulado!`).then((msg) => {
-      setTimeout(() => msg.delete(), 15000);
-    });
+    return message.react(`👌`)
   }
 };
