@@ -632,3 +632,575 @@ corno.tag
 
 [16/02/2022 | 15:35:80] Smooze Iniciou com 3 Users | 11 Guilds
 
+[16/02/2022 | 20:28:79] Smooze Iniciou com 4 Users | 11 Guilds
+
+[16/02/2022 | 20:28:30] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: https://open.spotify.com/playlist/4WQF6asp688yPYmhxc48Lh?si=4eeac1a8877548f3
+
+[16/02/2022 | 20:28:30] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id)
+
+[16/02/2022 | 20:29:51] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.map(x => x.title).slice(0,5)
+
+[16/02/2022 | 20:29:39] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.map(x => x.length)
+
+[16/02/2022 | 20:30:59] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.length
+
+[16/02/2022 | 20:30:42] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.map(x => x.title).slice(0,5)
+
+[16/02/2022 | 20:33:51] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reset
+​  Args: 
+
+[16/02/2022 | 20:33:65] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: cruzeiro da revoada
+
+[16/02/2022 | 20:33:57] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.map(x => x.title).slice(0,5)
+
+[16/02/2022 | 20:33:49] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue
+
+[16/02/2022 | 20:33:88] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue === null
+
+[16/02/2022 | 20:34:33] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue === []
+
+[16/02/2022 | 20:34:98] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.map(x => x.title)W
+
+[16/02/2022 | 20:34:34] COMANDO UTILIZADO:
+​  User: yJon4s_#0001 (431768491759239211)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: typeof this.client.manager.players.get(message.guild.id).queue
+
+[16/02/2022 | 20:35:69] Smooze Iniciou com 3 Users | 11 Guilds
+
+[16/02/2022 | 20:35:35] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: cruzeiro da revoada
+
+[16/02/2022 | 20:36:80] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: typeof this.client.manager.players.get(message.guild.id).queue
+
+[16/02/2022 | 20:36:23] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: pandora
+
+[16/02/2022 | 20:36:93] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: typeof this.client.manager.players.get(message.guild.id).queue
+
+[16/02/2022 | 20:37:01] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id)
+
+[16/02/2022 | 20:37:31] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue
+
+[16/02/2022 | 20:37:25] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue[0]
+
+[16/02/2022 | 20:37:46] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.map(x => x.title).slice(0,5)
+
+[16/02/2022 | 20:39:58] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.map(x => x.title).slice(0,5)
+
+[16/02/2022 | 20:43:07] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: https://open.spotify.com/playlist/4WQF6asp688yPYmhxc48Lh?si=ba4b158f4b33447c
+
+[16/02/2022 | 20:43:93] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:43:81] Smooze Iniciou com 4 Users | 11 Guilds
+
+[16/02/2022 | 20:43:86] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: https://open.spotify.com/playlist/4WQF6asp688yPYmhxc48Lh?si=ba4b158f4b33447c
+
+[16/02/2022 | 20:44:75] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:44:83] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:45:24] Smooze Iniciou com 4 Users | 11 Guilds
+
+[16/02/2022 | 20:46:68] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: https://open.spotify.com/playlist/4WQF6asp688yPYmhxc48Lh?si=ba4b158f4b33447c
+
+[16/02/2022 | 20:46:42] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 20:50:61] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:50:80] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:50:44] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 20:51:23] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:51:16] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:51:69] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 20:53:99] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:53:23] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 20:56:22] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:56:28] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 20:58:60] Smooze Iniciou com 4 Users | 11 Guilds
+
+[16/02/2022 | 20:58:73] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: https://open.spotify.com/playlist/4WQF6asp688yPYmhxc48Lh?si=ba4b158f4b33447c
+
+[16/02/2022 | 20:58:93] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 20:58:11] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue[0].map(x => x.title).slice(0,5)
+
+[16/02/2022 | 20:59:88] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue[0].title
+
+[16/02/2022 | 20:59:68] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:59:27] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 20:59:49] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:02:17] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue[0]
+
+[16/02/2022 | 21:02:37] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:02:96] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:03:50] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:03:67] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:03:02] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:03:38] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:05:91] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:05:94] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:06:89] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id)
+
+[16/02/2022 | 21:06:06] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).current
+
+[16/02/2022 | 21:07:08] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:07:43] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:07:26] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:07:31] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:08:70] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:08:09] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:08:72] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:08:71] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:09:08] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: eval
+​  Args: this.client.manager.players.get(message.guild.id).queue.length
+
+[16/02/2022 | 21:10:78] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:10:81] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:28:07] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:28:83] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: q
+
+[16/02/2022 | 21:28:36] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: queue
+
+[16/02/2022 | 21:28:51] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 21:57:19] Smooze Iniciou com 6 Users | 11 Guilds
+
+[16/02/2022 | 21:58:38] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: https://open.spotify.com/playlist/628VBzCy9J8i33hT8Qa6Wd?si=08dab80c705349b1
+
+[16/02/2022 | 21:58:40] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 22:04:26] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:08:76] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:09:60] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: q
+
+[16/02/2022 | 22:09:06] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 22:12:24] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:15:67] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:15:84] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:15:00] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:15:40] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:15:23] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:20:82] Smooze Iniciou com 3 Users | 11 Guilds
+
+[16/02/2022 | 22:20:90] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: play
+​  Args: https://open.spotify.com/playlist/628VBzCy9J8i33hT8Qa6Wd?si=08dab80c705349b1
+
+[16/02/2022 | 22:21:44] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: skip
+​  Args: 
+
+[16/02/2022 | 22:21:04] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 22:21:06] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: q
+
+[16/02/2022 | 22:21:30] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+
+[16/02/2022 | 22:21:43] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: q
+
+[16/02/2022 | 22:21:13] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: reload
+​  Args: q
+
+[16/02/2022 | 22:21:39] COMANDO UTILIZADO:
+​  User: !VPC#9522 (680943469228982357)
+​  Servidor: Zafriel Community (601848654202011677)
+​  Comando: queue
+​  Args: 
+

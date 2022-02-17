@@ -15,13 +15,13 @@ module.exports = class {
           !newState.channelID &&
           user.id !== this.client.user.id &&
           player &&
-          player.voiceChannel === oldState.channelID
+          player.voiceChannelId === oldState.channelID
         ) {
           if (oldState.channel.members.filter((c) => !c.user.bot).size === 0) {
             player.pause(true);
       
             this.client.channels.cache
-              .get(player.textChannel)
+              .get(player.textChannelId)
               .send(
                 `${Emojis.Microfone} » Vou sair do canal em **2 minutos** caso fique sozinho!`
               );
@@ -35,7 +35,7 @@ module.exports = class {
               player.destroy();
       
               return this.client.channels.cache
-                .get(player.textChannel)
+                .get(player.textChannelId)
                 .send(`${Emojis.Fone} » Saí do canal!`);
             }, 2 * 60000);
           }
@@ -43,7 +43,7 @@ module.exports = class {
           newState.channel &&
           newState.channel.members.filter((c) => !c.user.bot).size === 1 &&
           player &&
-          player.voiceChannel === newState.channelID
+          player.voiceChannelId === newState.channelID
         ) {
           player.pause(false);
         }
