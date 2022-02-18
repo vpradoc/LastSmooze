@@ -4,7 +4,7 @@ const path = require("path");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const { Vulkava } = require("vulkava");
-const logger = require("./utils/logger");
+const Util = require("./utils/Util")
 
 class Main extends Client {
   constructor(options) {
@@ -54,7 +54,7 @@ client.manager = new Vulkava({
   },
 });
 
-client.logs = logger;
+client.utils = Util 
 
 const onLoad = async () => {
   klaw("src/commands").on("data", (item) => {

@@ -22,16 +22,18 @@ module.exports = class Botinfo extends Command {
   }
 
   async run(message, args, prefix, author) {
-    const inline = true;
+
     const botAvatar = message.client.user.displayAvatarURL();
     const date = message.client.user.createdAt;
-    const userName = message.client.user.username;
     const servsize = message.client.guilds.cache.size;
     const dev = message.client.users.cache.get("680943469228982357");
     const uptime = moment
       .duration(process.uptime() * 1000)
       .format("d[d] h[h] m[m] e s[s]");
-    const usersize = message.client.guilds.cache.map(g => g.memberCount).reduce((a, g) => a + g).toLocaleString();
+    const usersize = message.client.guilds.cache
+      .map((g) => g.memberCount)
+      .reduce((a, g) => a + g)
+      .toLocaleString();
 
     const embed = new ClientEmbed(author)
       .setThumbnail(botAvatar)
@@ -56,11 +58,13 @@ module.exports = class Botinfo extends Command {
           process.version
         }](https://nodejs.org/en/)**\n${
           Emojis.Uptime
-        } Tempo online: **${uptime}**\n${Emojis.Engrenagem} RAM Usada: **${(
+        } Tempo online: ${uptime}\n${Emojis.Engrenagem} RAM Usada: **${(
           process.memoryUsage().heapUsed /
           1024 /
           1024
-        ).toFixed(2)}MB**\n${Emojis.Wifi} Ping: **${message.client.ws.ping}ms**\n${
+        ).toFixed(2)}MB**\n${Emojis.Wifi} Ping: **${
+          message.client.ws.ping
+        }ms**\n${
           Emojis.Heroku
         } Hospedagem: **[Heroku](https://www.heroku.com/)**\n${
           Emojis.Linux
