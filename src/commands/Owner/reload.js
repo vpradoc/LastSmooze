@@ -44,5 +44,7 @@ module.exports = class Blacklist extends Command {
       return message.reply(
         `${Emojis.Certo} »  O comando **${cmdname}** foi recarregado com sucesso.`
       );
+
+      console.log(`\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n${cmdname} Foi recarregado!`)
   }
 };

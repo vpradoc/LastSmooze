@@ -5,7 +5,7 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const { Vulkava } = require("vulkava");
 const Util = require("./utils/Util")
-const { default: AppleMusic } = require("better-erela.js-apple")
+
 
 class Main extends Client {
   constructor(options) {
@@ -34,6 +34,7 @@ class Main extends Client {
 }
 
 const dbIndex = require("./database/index.js");
+const utils = require("./utils/index.js");
 dbIndex.start();
 
 const client = new Main({
@@ -41,21 +42,22 @@ const client = new Main({
   allowedMentions: { parse: ["users", "roles"], repliedUser: true },
 });
 
+client.utils = utils
+
 client.manager = new Vulkava({
   nodes: [
     {
       id: "Smooze 1",
-      hostname: "smoozelava.herokuapp.com",
+      hostname: process.env.hostname,
       port: 80,
-      password: "vpc1",
+      password: process.env.hostpass,
+      resumeKey: "SPZ",
+      resumeTimeout: 5 * 60000
     },
   ],
   sendWS: (guildId, payload) => {
     client.guilds.cache.get(guildId)?.shard.send(payload);
   },
-  plugins: [
-    new AppleMusic()
-  ]
 });
 
 client.utils = Util 

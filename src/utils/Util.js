@@ -75,4 +75,12 @@ module.exports = class Util {
     return messagec.channel.send({embeds: [EmbedError]}), logchannel.send({embeds: [EmbedError1]}), console.log(error)
 
   }
+
+  static titleize(string, separator = ' ') {
+    return string
+      .split(separator)
+      .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+      .join(separator);
+  }
+
 };

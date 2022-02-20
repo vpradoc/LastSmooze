@@ -45,7 +45,7 @@ module.exports = class Play extends Command {
 
       if (result.loadType === "LOAD_FAILED")
         return message.reply(
-          `${Emojis.Errado} **|** Você precisa estar inserir um link/nome de música!`
+          `${Emojis.Errado} **|** Você precisa estar inserir um link/nome de música válido!`
         );
       if (result.loadType === "NO_MATCHES")
         return message.reply(

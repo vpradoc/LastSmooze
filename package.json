@@ -8,7 +8,6 @@
     "@iamtraction/google-translate": "^1.1.2",
     "aki-api": "^5.2.1",
     "axios": "^0.21.1",
-    "better-erela.js-apple": "^1.0.1",
     "canvas": "^2.9.0",
     "colors": "^1.4.0",
     "discord.js": "^13.6.0",
@@ -25,7 +24,7 @@
     "os": "^0.1.2",
     "parse-ms": "^3.0.0",
     "path": "^0.12.7",
-    "vulkava": "^1.0.13",
+    "vulkava": "^1.1.1",
     "weather-js": "^2.0.0",
     "ws": "^7.5.3"
   },
