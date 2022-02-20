@@ -5,6 +5,7 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const { Vulkava } = require("vulkava");
 const Util = require("./utils/Util")
+const { default: AppleMusic } = require("better-erela.js-apple")
 
 class Main extends Client {
   constructor(options) {
@@ -52,6 +53,9 @@ client.manager = new Vulkava({
   sendWS: (guildId, payload) => {
     client.guilds.cache.get(guildId)?.shard.send(payload);
   },
+  plugins: [
+    new AppleMusic()
+  ]
 });
 
 client.utils = Util 
