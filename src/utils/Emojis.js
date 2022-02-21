@@ -3,7 +3,7 @@ module.exports = {
   Errado: "<:errado:866096308841218099>",
   Smooze: "<:smooze:873346922117730355>",
   Fone: "<:fone2:877652270773334027>",
-  Coroa: "<:coroa:866097710465155122>",
+  Coroa: "<:coroa:945304756740571186>",
   Id: "<:id2:943301608261971988>",
   Calendario: "<:calendario:943303526090694706>",
   Engrenagem: "<:engrenagem1:943303164461981716>",

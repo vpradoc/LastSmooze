@@ -29,14 +29,6 @@ module.exports = class Serverinfo extends Command {
           ? "O servidor não conta com Nitro Boost's"
           : `${message.guild.premiumSubscriptionCount} Boost(s) (Nível: ${message.guild.premiumTier.replace("TIER_", "")})`;
 
-      let channels = [
-        `Texto: ${
-          message.guild.channels.cache.filter((x) => x.type == "text").size
-        }`,
-        `Voz: ${
-          message.guild.channels.cache.filter((x) => x.type == "voice").size
-        }`,
-      ].join("\n");
 
       const SERVERINFO = new ClientEmbed(author)
         .setAuthor(

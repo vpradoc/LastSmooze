@@ -70,7 +70,7 @@ module.exports = class Help extends Command {
           (x) => x.category == "Owner"
         ).size;
         HELP.setDescription(
-          `Posso executar comandos diversos para fazer com que meus usuários se sintam a vontade em seus servidores. No momento eu conto com \`${
+          `Posso executar vários comandos para fazer com que meus usuários se sintam a vontade em seus servidores. No momento eu conto com \`${
             this.client.commands.size - ownerc
           }\` funcionalidades.\n\nPara saber mais sobre algum dos comandos listados abaixo, utilize **${
             server.prefix
