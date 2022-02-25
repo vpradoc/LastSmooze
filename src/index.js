@@ -54,6 +54,14 @@ client.manager = new Vulkava({
       resumeKey: "SPZ",
       resumeTimeout: 5 * 60000
     },
+    {
+      id: "Smooze 2",
+      hostname: process.env.hostname,
+      port: 80,
+      password: process.env.hostpass,
+      resumeKey: "SPZ2",
+      resumeTimeout: 5 * 60000
+    },
   ],
   sendWS: (guildId, payload) => {
     client.guilds.cache.get(guildId)?.shard.send(payload);
