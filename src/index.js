@@ -4,8 +4,7 @@ const path = require("path");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const { Vulkava } = require("vulkava");
-const Util = require("./utils/Util")
-
+const Util = require("./utils/Util");
 
 class Main extends Client {
   constructor(options) {
@@ -42,25 +41,25 @@ const client = new Main({
   allowedMentions: { parse: ["users", "roles"], repliedUser: true },
 });
 
-client.utils = utils
+client.utils = utils;
 
 client.manager = new Vulkava({
   nodes: [
     {
       id: "Smooze 1",
-      hostname: process.env.hostname,
+      hostname: "smoozelava.herokuapp.com",
       port: 80,
       password: process.env.hostpass,
       resumeKey: "SPZ",
-      resumeTimeout: 5 * 60000
+      resumeTimeout: 5 * 60000,
     },
     {
       id: "Smooze 2",
-      hostname: process.env.hostname,
+      hostname: "smoozelava2.herokuapp.com",
       port: 80,
-      password: process.env.hostpass,
+      password: "vpc1",
       resumeKey: "SPZ2",
-      resumeTimeout: 5 * 60000
+      resumeTimeout: 5 * 60000,
     },
   ],
   sendWS: (guildId, payload) => {
@@ -68,7 +67,7 @@ client.manager = new Vulkava({
   },
 });
 
-client.utils = Util 
+client.utils = Util;
 
 const onLoad = async () => {
   klaw("src/commands").on("data", (item) => {
