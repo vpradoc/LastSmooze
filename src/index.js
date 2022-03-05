@@ -46,18 +46,18 @@ client.utils = utils;
 client.manager = new Vulkava({
   nodes: [
     {
-      id: "Smooze 1",
-      hostname: "smoozelava.herokuapp.com",
+      id: "Lava EUA",
+      hostname: "lavalinkeua.herokuapp.com",
       port: 80,
-      password: process.env.hostpass,
+      password: "1234",
       resumeKey: "SPZ",
       resumeTimeout: 5 * 60000,
     },
     {
-      id: "Smooze 2",
-      hostname: "smoozelava2.herokuapp.com",
+      id: "Lava Europa",
+      hostname: "lavalinkeu.herokuapp.com",
       port: 80,
-      password: process.env.hostpass,
+      password: "1234",
       resumeKey: "SPZ2",
       resumeTimeout: 5 * 60000,
     },
