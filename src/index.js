@@ -57,7 +57,7 @@ client.manager = new Vulkava({
       id: "Smooze 2",
       hostname: "smoozelava2.herokuapp.com",
       port: 80,
-      password: "vpc1",
+      password: process.env.hostpass,
       resumeKey: "SPZ2",
       resumeTimeout: 5 * 60000,
     },
@@ -65,6 +65,7 @@ client.manager = new Vulkava({
   sendWS: (guildId, payload) => {
     client.guilds.cache.get(guildId)?.shard.send(payload);
   },
+  unresolvedSearchSource: "youtube"
 });
 
 client.utils = Util;
