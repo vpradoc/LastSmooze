@@ -17,7 +17,8 @@ module.exports = class {
     }
 
     const Embed = new Discord.MessageEmbed()
-    .setDescription(`${Emojis.CD} | [${track.title}](${track.uri}) - [<@${track.requester.id}>]`)
+    .setDescription(`**[${track.title}](${track.uri})**\n\n${Emojis.CD}** | Origem:** \`${track.author}\`\n${Emojis.Bust}** | Pedido por:** \`${track.requester.tag}\`\n${Emojis.Tempo}** | Duração:** \`${this.client.utils.formatTime(this.client.utils.convertMilliseconds(track.duration))}\``)
+    .setThumbnail(track.thumbnailUrl)
     .setColor("#759ffe")
 
     player.lastPlayingMsgID = await channel

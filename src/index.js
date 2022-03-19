@@ -5,6 +5,7 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const { Vulkava } = require("vulkava");
 const Util = require("./utils/Util");
+const { Manager } = require("./music/Manager");
 
 class Main extends Client {
   constructor(options) {
@@ -37,11 +38,12 @@ const utils = require("./utils/index.js");
 dbIndex.start();
 
 const client = new Main({
-  intents: 641,
+  intents: 643,
   allowedMentions: { parse: ["users", "roles"], repliedUser: true },
 });
 
 client.utils = utils;
+
 
 client.manager = new Vulkava({
   nodes: [
@@ -65,7 +67,7 @@ client.manager = new Vulkava({
   sendWS: (guildId, payload) => {
     client.guilds.cache.get(guildId)?.shard.send(payload);
   },
-  unresolvedSearchSource: "youtube"
+  unresolvedSearchSource: "youtube",
 });
 
 client.utils = Util;
@@ -84,14 +86,6 @@ const onLoad = async () => {
     const event = new (require(`./client/Events/Discord/${file}`))(client);
     client.on(eventName, (...args) => event.run(...args));
     delete require.cache[require.resolve(`./client/Events/Discord/${file}`)];
-  });
-
-  const processEvents = await readdir("./src/client/Events/Process");
-  processEvents.forEach((file) => {
-    const eventName = file.split(".")[0];
-    const event = new (require(`./client/Events/Process/${file}`))(client);
-    process.on(eventName, (...args) => event.run(...args));
-    delete require.cache[require.resolve(`./client/Events/Process/${file}`)];
   });
 
   const musicEvents = await readdir("./src/client/Events/Music");

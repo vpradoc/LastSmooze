@@ -129,7 +129,7 @@ module.exports = class {
           num = num + 1;
 
           }catch(error) {
-            Utils.Error(error, logc, message, cmd)
+           Utils.Error(error, logc, message, cmd)
           }
 
 

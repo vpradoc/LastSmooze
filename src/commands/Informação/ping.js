@@ -17,6 +17,7 @@ module.exports = class Ping extends Command {
   }
 
   async run(message, args, prefix, author) {
+
     const start = process.hrtime();
     const doc = await User.findOne({ _id: message.author.id });
     const stop = process.hrtime(start);
@@ -29,5 +30,7 @@ module.exports = class Ping extends Command {
         `**🏓 | Meu ping:** \`${ping}\`ms\n**${Emojis.Wifi} | MongoDB:** \`${pingm}\`ms`
       );
     });
+
+
   }
 };

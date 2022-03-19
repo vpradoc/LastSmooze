@@ -4,7 +4,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 const ClientEmbed = require("../../structures/ClientEmbed.js");
 const ms = require("ms");
-
+const ws = require("ws")
 module.exports = class LavaStats extends Command {
   constructor(client) {
     super(client);
@@ -20,23 +20,21 @@ module.exports = class LavaStats extends Command {
   }
 
   async run(message, args, prefix, author) {
+
+    console.log(packager)
+    
+    /*
     if (message.author.id !== "680943469228982357") return;
 
     const node = this.client.manager.nodes.filter(
       (x) => x.stats.uptime != 0
     )[0];
-
-    let startLL;
-
-    if (node.options.id === "Smooze 1") {
-      startLL = process.hrtime();
-      await fetch(`smoozelava.herokuapp.com/version`, {
+    
+     const startLL = await fetch(`smoozelava.herokuapp.com/version`, {
         headers: { Authorization: "vpc1" },
-      });
-    } else startLL = process.hrtime();
-    await fetch(`smoozelava2.herokuapp.com/version`, {
-      headers: { Authorization: "vpc1" },
-    });
+      })
+
+      console.log(startLL)
 
     const stopLL = process.hrtime(startLL);
 
@@ -74,5 +72,6 @@ module.exports = class LavaStats extends Command {
       );
 
     message.reply({ embeds: [EMBED] });
+    */
   }
 };

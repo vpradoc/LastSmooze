@@ -1,5 +1,4 @@
 const Command = require("../../structures/Command");
-const { Manager } = require("erela.js");
 const Emojis = require("../../utils/Emojis");
 module.exports = class Skip extends Command {
   constructor(client) {
@@ -42,9 +41,7 @@ module.exports = class Skip extends Command {
         `${Emojis.Errado} **|** Você precisa estar no mesmo canal que eu para modificar a fila!`
       );
 
-
-    const title = message.client.manager.players.get(message.guild.id).current.title
     player.skip();
-    return message.react(`👌`)
+    return message.react(`👌`);
   }
 };
