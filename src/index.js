@@ -5,7 +5,6 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const { Vulkava } = require("vulkava");
 const Util = require("./utils/Util");
-const { Manager } = require("./music/Manager");
 
 class Main extends Client {
   constructor(options) {
