@@ -1,7 +1,8 @@
 const CommandC = require("../../database/Schemas/Command"),
   ClientS = require("../../database/Schemas/Client");
 const Command = require("../../structures/Command");
-const Emojis = require('../../utils/Emojis')
+const Emojis = require("../../utils/Emojis");
+
 module.exports = class Manu extends Command {
   constructor(client) {
     super(client);
@@ -10,14 +11,14 @@ module.exports = class Manu extends Command {
     this.name = "manu";
     this.category = "Owner";
     this.description = "Comando para colocar outros comandos em manutenção";
-    this.usage = "manu <comando>"
+    this.usage = "manu <comando>";
 
     this.enabled = true;
     this.guildOnly = true;
   }
 
   async run(message, args, prefix, author) {
-    if (message.author.id !== '680943469228982357') return;
+    if (message.author.id !== "680943469228982357") return;
 
     let re = args.slice(2).join(" ");
 
@@ -30,7 +31,7 @@ module.exports = class Manu extends Command {
         if (cliente.manutenção) {
           await ClientS.findOneAndUpdate(
             { _id: this.client.user.id },
-            { $set: { manutenção: false} }
+            { $set: { manutenção: false } }
           );
           return message.reply(
             `${Emojis.Certo} » Fui retirado da manutenção com sucesso.`
@@ -41,7 +42,7 @@ module.exports = class Manu extends Command {
           );
           await ClientS.findOneAndUpdate(
             { _id: this.client.user.id },
-            { $set: { manutenção: true} }
+            { $set: { manutenção: true } }
           );
         }
       });
@@ -67,7 +68,7 @@ module.exports = class Manu extends Command {
           if (comando.manutenção) {
             await CommandC.findOneAndUpdate(
               { _id: name },
-              { $set: { manutenção: false} }
+              { $set: { manutenção: false } }
             );
             return message.reply(
               `${Emojis.Certo} » Retirei o comando **\`${name}\`** da manutenção com sucesso.`
@@ -75,7 +76,7 @@ module.exports = class Manu extends Command {
           } else {
             await CommandC.findOneAndUpdate(
               { _id: name },
-              { $set: { manutenção: true} }
+              { $set: { manutenção: true } }
             );
             return message.reply(
               `${Emojis.Certo} » Coloquei o comando **\`${name}\`** em manutenção com sucesso.`

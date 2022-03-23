@@ -19,11 +19,10 @@ module.exports = class Eval extends Command {
   }
 
   async run(message, args, prefix, author) {
-
     if (message.author.id !== "680943469228982357") return;
 
     const mguild = message.guild;
-    const manager = this.client.manager
+    const manager = this.client.manager;
 
     if (!args[0]) return;
 
@@ -31,19 +30,15 @@ module.exports = class Eval extends Command {
 
     const token = "***************************************";
 
-    let security = [
-      "token",
-      "process.env",
-      "TOKEN",
-    ]
+    let security = ["token", "process.env", "TOKEN"];
 
     const EmbedTK = new Discord.MessageEmbed()
-        .setColor(process.env.EMBED_COLOR)
-        .setDescription(`:outbox_tray: \`\`\`js\nExpressão Inválida...\`\`\``);
+      .setColor(process.env.EMBED_COLOR)
+      .setDescription(`:outbox_tray: \`\`\`js\nExpressão Inválida...\`\`\``);
 
-    if(security.some(word => message.content.includes(word))) {
-      return message.reply({ embeds: [EmbedTK] })
-    } 
+    if (security.some((word) => message.content.includes(word))) {
+      return message.reply({ embeds: [EmbedTK] });
+    }
 
     try {
       let litchtotoso = await eval(litchdelicia);
@@ -53,11 +48,11 @@ module.exports = class Eval extends Command {
       const Embed = new Discord.MessageEmbed()
         .setColor(process.env.EMBED_COLOR)
         .setDescription(`:outbox_tray: \`\`\`js\n${litchtotoso}\`\`\``);
+
       message.reply({ embeds: [Embed] });
     } catch (e) {
-
       const EmbedE = new Discord.MessageEmbed()
-        .setColor('#ff0000')
+        .setColor("#ff0000")
         .setDescription(`${Emojis.Errado} \`\`\`js\n${e}\`\`\``);
 
       if (e) message.reply({ embeds: [EmbedE] });

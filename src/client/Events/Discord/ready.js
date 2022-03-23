@@ -7,7 +7,9 @@ module.exports = class {
 
   async run() {
     this.client.manager.start(this.client.user.id);
-    this.client.on("raw", packet => this.client.manager.handleVoiceUpdate(packet));
+    this.client.on("raw", (packet) =>
+      this.client.manager.handleVoiceUpdate(packet)
+    );
 
     /*
     Utils.logger(`${this.client.user.username} Iniciou com ${this.client.users.cache.size} Users | ${this.client.guilds.cache.size} Guilds\n`)
