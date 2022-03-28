@@ -14,6 +14,7 @@
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "mongoose": "^5.13.3",
+    "node-album-color": "^1.0.2",
     "node-fetch": "^2.6.1",
     "os": "^0.1.2",
     "parse-ms": "^3.0.0",

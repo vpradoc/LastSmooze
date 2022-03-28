@@ -1,7 +1,5 @@
 const Command = require("../../structures/Command");
-const WebSocket = require("ws");
-const { listenerCount } = require("ws");
-
+const { getColorsArray } = require("node-album-color")
 module.exports = class Test extends Command {
   constructor(client) {
     super(client);
@@ -21,17 +19,6 @@ module.exports = class Test extends Command {
     if (message.author.id !== '680943469228982357') return;
     
 
-    const ws = new WebSocket("ws://lavaedit.herokuapp.com", {
-  headers: {
-    Authorization: "vpc1",
-  }});
-
-  ws.on('open', () => {
-      console.log('Conectou')
-  })
-
-  ws.send({
-      op: 'destroy',
-  })
+    console.log(getColorsArray(author.displayAvatarURL()))
   }
 };
